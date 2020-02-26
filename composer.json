@@ -1,0 +1,7 @@
+{
+    "require": {
+        "gettext/gettext": "^5.3",
+        "gettext/php-scanner": "^1.1",
+        "gettext/translator": "^1.0"
+    }
+}
