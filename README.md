@@ -4,7 +4,7 @@ A php-gettext template to make translations easier and more accessible for PHP-b
 
 This templates uses the [PHP implementation of gettext (php-gettext)](https://github.com/php-gettext/Gettext).
 
-Any suggestion or contribution to make? Do not hesitate to post an issue or a PR!
+Any suggestion or contribution to make? Do not hesitate to sumbit an issue or a PR!
 
 ## Prerequisites
 
@@ -14,14 +14,15 @@ In order to make this template work, you have to install gettext, php-scanner an
 composer require gettext/gettext gettext/php-scanner gettext/translator
 ```
 
-## File structure
+## Template structure
 
 ```
-| locale                        //Translations directory (after first run)
-    | - fr
+| locale                        //Translations directory (generated during first run)
+    | - en
         | - LC_MESSAGES
             | - messages.php
             | - messages.po
+    | - fr
     | ...
 | extractor.php                 //Generate PO translations files
 | generator.php                 //Generate PHP translations files
@@ -30,9 +31,9 @@ composer require gettext/gettext gettext/php-scanner gettext/translator
 
 ## How to use
 
-In order to translate your project, you have to use the extractor first. Then you will be able to fill in the PO files with your translations. Then you have to run the generator to create the PHP files containing the translations which will be used to load them.
+In order to translate your project, you have to use the extractor first. Then you will be able to fill in the PO files with your translations. Then you have to run the generator to create the PHP files containing the translations which will be used on the client.
 
-**Warning**: Do *NOT* edit translations directly into the generated PHP files or else they will be overwritten as soon as you will launch the generator again. You have to edit the PO files instead.
+**Warning**: Do *NOT* edit translations directly in the generated PHP files or else they will be overwritten as soon as you will launch the generator once again. You have to edit the PO files instead.
 
 ### Extractor
 
@@ -41,10 +42,10 @@ The extractor scans the specified PHP files for translatable strings and exports
 You can set up some variables at the beginning of the file:
 
 ```php
-//Translation domain
+//Translation domain (name of the generated files without extension)
 $domain = "messages";
 
-//Supported languages (Fallback is English)
+//Supported languages (fallback is English)
 $languages = [
     "en",
     "fr"
@@ -73,17 +74,17 @@ The extractor generates PHP translation file for each specified domain and langu
 You can set up some variables at the beginning of the file:
 
 ```php
-//Translation domain
+//Translation domain (name of the generated files without extension)
 $domain = "messages";
 
-//Supported languages (Fallback is English)
+//Supported languages (fallback is English)
 $languages = [
     "en",
     "fr"
 ];
 ```
 
-**Note**: You should use the same parameters as in the extractor to be sure that every file will be correctly generated
+**Note**: You should use the same parameters as in the extractor to be sure that every file will be correctly generated.
 
 To run the generator, simply use the PHP CLI:
 
@@ -93,10 +94,9 @@ php generator.php
 
 Now you can load the PHP translation file you want on your project in order to apply translations.
 
-The example in the `index.php` file loads the appropriate language depending of the URL.
-For French translation the URL would be *www.yourdomain.com/index.php?lang=fr*
+The `index.php` example file loads the appropriate language depending of the URL. For French translation the URL would be *www.yourdomain.com/index.php?lang=fr*
 
-**Note**: If the language is not supported or not specified the fallback language will be used instead (default is English).
+**Note**: If the language is not supported or not specified, the fallback language will be used instead (fallback is English).
 
 # License
 
