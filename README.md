@@ -1,6 +1,6 @@
 # php-gettext template
 
-A php-gettext template to make translations easier and more accessible for a Web PHP-based project.
+A php-gettext template to make translations easier and more accessible for PHP-based Web projects.
 
 This templates uses the [PHP implementation of gettext (php-gettext)](https://github.com/php-gettext/Gettext).
 
