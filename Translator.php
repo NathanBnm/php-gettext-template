@@ -85,7 +85,7 @@ $isVerbose = $cli->arguments->defined('verbose');
 
 if ($cli->arguments->defined('extract') !== false) {
     $phpScanner = new PhpScanner($translations);
-    $phpScanner->setDefaultDomain("messages");
+    $phpScanner->setDefaultDomain($domain);
 
     if ($cli->arguments->defined('comments') !== false) {
         $phpScanner->extractCommentsStartingWith("Translators:");
@@ -154,7 +154,6 @@ if ($cli->arguments->defined('extract') !== false) {
 
             $translations->setDescription($description);
             $translations->setLanguage($language);
-            $translations->setDomain($domain);
 
             $translations->getHeaders()->set("Last-Translator", "Automatically generated");
             $translations->getHeaders()->set("PO-Revision-Date", date("Y-m-d H:iO"));
