@@ -57,7 +57,7 @@ $value = 10;
     <!-- Listing available languages -->
     <ul>
         <?php foreach ($languages as $l => $name) { ?>
-            <li><a href="?lang=<?= $l; ?>"><?= $name; ?></a></li>
+            <li><a href="?lang=<?= $l; ?>" hreflang="<?= $l; ?>"><?= $name; ?></a></li>
         <?php } ?>
     </ul>
 </body>
